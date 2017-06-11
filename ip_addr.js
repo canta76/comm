@@ -18,4 +18,4 @@ setInterval(function() {
   }  
   // console.log(buf);
   process.send(buf); // invio il buffer al chiamante
-}, 10000);
+}, 10050);
