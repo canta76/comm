@@ -15,7 +15,7 @@ setInterval(function() {
     offset += 4;
     if (offset >= buf.length)
       break;
-  }
+  }  
   // console.log(buf);
   process.send(buf); // invio il buffer al chiamante
 }, 10000);
