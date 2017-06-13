@@ -88,14 +88,17 @@ _music_play = function(id, mode) {
       return _music_stop();
     }
     _status.PlayingMusic = 1;
+    _status.PlayingCode = id;
     if (mode == _max_sounds.MODE_RUN) {
       _status.PlayingMode = 0;
     } else if (mode == _max_sounds.MODE_STATIONS) {
       _status.PlayingMode = 1;
     } else if (mode == _max_sounds.MODE_ACTIONS) {
       _status.PlayingMode = 2;
+    } else if (mode == _max_sounds.MODE_STATUS) {
+      _status.PlayingMode = 3;
+      _status.PlayingCode = 0;
     }
-    _status.PlayingCode = id;
     if (++_status.PlayCounter >= 0xffff) _status.PlayCounter = 0;
     _status_send();
     return true;
@@ -278,4 +281,5 @@ app.post('/api/file', function(req, res) {
 });
 app.listen(3000, function() {
   console.log("Working on port 3000");
+  _music_play(_max_sounds.ID_STATUS__STARTUP, _max_sounds.MODE_STATUS);
 });

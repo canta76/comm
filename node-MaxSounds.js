@@ -7,13 +7,19 @@ module.exports = function() {
   this.FOLDER_SND_RUN       = '/root/_sound_run';
   this.FOLDER_SND_STATIONS  = '/root/_sound_stations';
   this.FOLDER_SND_ACTIONS   = '/root/_actions';
+  this.FOLDER_SND_STATUS    = 'audio';
+  
   this.NUM_SND_RUN          = 10;
   this.NUM_SND_STATIONS     = 100;
   this.NUM_SND_ACTIONS      = 4;
+
   this.MODE_RUN             = 'run';
   this.MODE_STATIONS        = 'stations';
   this.MODE_ACTIONS         = 'actions';
+  this.MODE_STATUS          = 'status';
   
+  this.ID_STATUS__STARTUP   = 'startup';
+
   remove_files = function(dirPath) {
     try { var files = fs.readdirSync(dirPath); }
     catch(e) { return; }
@@ -192,6 +198,16 @@ module.exports = function() {
       song_name = this.FOLDER_SND_ACTIONS + '/' + id + "/" + this.SActions[id-1].name;
       song_amp  = this.SActions[id-1].amp;
       max_id    = this.NUM_SND_ACTIONS;
+    } 
+    else if (mode == this.MODE_STATUS) 
+    {
+      if (id == this.ID_STATUS__STARTUP)
+      {
+        song.name = this.FOLDER_SND_STATUS + '/' + id + ".mp3";
+        song.amp  = 0;    
+        return true;
+      }
+      return false;
     } 
     else 
     {
