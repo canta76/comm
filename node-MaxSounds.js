@@ -7,7 +7,7 @@ module.exports = function() {
   this.FOLDER_SND_RUN       = '/root/_sound_run';
   this.FOLDER_SND_STATIONS  = '/root/_sound_stations';
   this.FOLDER_SND_ACTIONS   = '/root/_actions';
-  this.FOLDER_SND_STATUS    = 'audio';
+  this.FOLDER_SND_STATUS    = '/root/comm/audio';
   
   this.NUM_SND_RUN          = 10;
   this.NUM_SND_STATIONS     = 100;
@@ -203,7 +203,7 @@ module.exports = function() {
     {
       if (id == this.ID_STATUS__STARTUP)
       {
-        song.name = this.FOLDER_SND_STATUS + '/' + id + ".mp3";
+        song.name = this.FOLDER_SND_STATUS + '/' + id + '.mp3';
         song.amp  = 0;    
         return true;
       }
