@@ -31,6 +31,16 @@ uploader.on('message', function(m) {
   }
 });
 
+var cleanExit = function(v) { 
+  console.log('bye');
+  ip_addr.kill();
+  ping_google.kill();
+  uploader.kill();
+  process.exit();
+};
+process.on('SIGINT',  cleanExit); // catch ctrl-c
+process.on('SIGTERM', cleanExit); // catch kill
+
 // ************************************************************
 
 try
