@@ -12,7 +12,6 @@ setInterval(function() {
       console.log("no internet!");
       _internet_available = 0;
     } else {
-      console.log(data);
       _internet_available = 1;
     } */
     process.send(data.avg);

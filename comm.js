@@ -20,8 +20,9 @@ ip_addr.on('message', function(data) {
   // console.log('ip addrs: ' + _ip_addr_buffer.toString('hex'));  
 });
 ping_google.on('message', function(data) {
-  _internet_available = !isNaN(data) ? 1 : 0;
-  // console.log('internet available: ' + _internet_available);  
+  _internet_available = (data != null) ? 1 : 0;
+  //console.log(data);  
+  //console.log('internet available: ' + _internet_available);  
 });
 uploader.on('message', function(m) {
   if (m.cmd == "status") {
